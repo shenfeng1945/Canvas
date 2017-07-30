@@ -1,0 +1,93 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+.page{
+    display:flex;
+}
+a{text-decoration:none;color:black;}
+ul,ol{list-style:none;}
+.myCanvas{
+    height:100vh;
+    flex-grow:1;
+    border:8px solid green;
+    cursor:crosshair;
+    margin-right:1px;
+}
+.nav{
+    text-align: center;
+    width:12vw;
+}
+.nav .tools{
+    margin-top:25px;
+}
+.tools > div{
+    border:1px solid black;
+    margin-top:5px;
+    padding:2px 0;
+    cursor:pointer;
+}
+.tools > div.active{
+    background: rgba(0,0,0,.2);
+}
+
+.shapes{
+    margin-top:25px;
+}
+.shapes > div{
+    border:1px solid black;
+     margin-top:5px;
+    padding:2px 0;
+    cursor:pointer;
+}
+.shapes > div.active{
+    background: rgba(0,0,0,.2);
+}
+.nav .line{
+    margin-top:25px;
+}
+.line > div{
+    border:1px solid black;
+    margin-top:5px;
+    padding:2px 0;
+    cursor:pointer;
+}
+.line > div.active{
+    background: rgba(0,0,0,.2);
+}
+.nav .color{
+    margin-top:25px;
+}
+.color ul{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+}
+.color ul li{
+    border:1px solid black;
+    padding:1px 3px;
+    margin: 5px 3px 0;
+    display: inline-block;
+    cursor: pointer;
+}
+.color ul li.active{
+    background: rgba(0,0,0,.2);
+}
+.download{
+    margin-top:25px;
+    cursor:pointer;
+}
+.download #download{
+    border:1px solid black;
+    padding:5px 0;
+    display: block;
+}
+.download .preview{
+    border:1px solid black;
+    padding:5px 0;
+    margin-top:10px;
+}
+svg.icon{
+    width:20px;height:20px;
+    vertical-align: bottom;
+}
+.nav>.tools>div:hover,.nav>.shapes>div:hover,.nav>.line>div:hover,.nav>.color>div:hover{
+    background: rgba(0,0,0,.2);
+}

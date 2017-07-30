@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://at.alicdn.com/t/font_0m9dsoox45qm2t9.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <canvas class="myCanvas"></canvas>
+        <div class="nav">
+            <section class="tools">
+                <p>工具</p>
+                <div class="draw point active">绘图
+                    <svg class="icon">
+                        <use xlink:href="#icon-pen"></use>
+                    </svg>
+                </div>
+                <div class="eraser point">橡皮檫
+                    <svg class="icon">
+                        <use xlink:href="#icon-eraser"></use>
+                    </svg>
+                </div>
+                <div class="clear point">清空
+                    <svg class="icon">
+                        <use xlink:href="#icon-clear"></use>
+                    </svg>
+                </div>
+            </section>
+            <section class="shapes">
+                <p class="shapes">形状</p>
+                <div class="triangle point">三角形
+                    <svg class="icon">
+                        <use xlink:href="#icon-triangle"></use>
+                    </svg>
+                </div>
+                <div class="squareness point">矩形
+                    <svg class="icon">
+                        <use xlink:href="#icon-juxing"></use>
+                    </svg>
+                </div>
+                <div class="circle point">圆形
+                    <svg class="icon">
+                        <use xlink:href="#icon-circle"></use>
+                    </svg>
+                </div>
+            </section>
+            <section class="line">
+                <p>粗细</p>
+                <div class="thin active" title="1mm宽">细</div>
+                <div class="middle" title="2mm宽">中粗</div>
+                <div class="wide" title="3mm宽">粗</div>
+            </section>
+            <section class="color">
+                <p>颜色</p>
+                <ul>
+                    <li class="active" data-value="black">黑</li>
+                    <li data-value="red">红</li>
+                    <li data-value="orange">橙</li>
+                    <li data-value="yellow">黄</li>
+                    <li data-value="green">绿</li>
+                    <li data-value=blue>蓝</li>
+                    <li data-value="gray">灰</li>
+                    <li data-value="purple">紫</li>
+                </ul>
+            </section>
+            <section class="download">
+              <a id=download>
+                下载作品
+                <svg class="icon">
+                    <use xlink:href="#icon-download"></use>
+                </svg>
+              </a>
+            <div class="preview">
+                预览作品
+                <svg class="icon">
+                    <use xlink:href="#icon-yulan"></use>
+                </svg>
+            </div>
+         </section>
+        </div>
+    </div>
+</body>
+<script src="./main.js"></script>
+
+</html>
