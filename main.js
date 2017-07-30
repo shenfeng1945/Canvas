@@ -137,7 +137,7 @@ function preTriangle(e) {
 }
 function appearTriangle(e) {
     let appearTriX = e.offsetX
-    let appearTriY = e.offsetY
+    let appearTriY = e.offsetY + 5
     if (canvas.getContext) {
         let context = canvas.getContext('2d')
         context.beginPath()
@@ -164,7 +164,7 @@ function preSquare(e) {
 }
 function appearSquare(e) {
     let appearX = e.offsetX
-    let appearY = e.offsetY + 5
+    let appearY = e.offsetY + 6
     if (canvas.getContext) {
         let context = canvas.getContext('2d')
         context.beginPath()
