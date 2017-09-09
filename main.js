@@ -1,54 +1,54 @@
-
 let canvas = document.querySelector('.myCanvas')
 let { clientWidth, clientHeight } = document.documentElement
 let navWidth = document.getElementsByClassName('nav')[0].clientWidth
 canvas.width = clientWidth - navWidth
 canvas.height = clientHeight
-//应该可以只要一个空对象
 let prePoint = {}
-let preTriPoint = {}
-let preSquPoint = {}
-let preCirPoint = {}
-$('.nav').on('click', '.point', function (e) {
-    let $div = $(e.currentTarget)
-    $('.nav .point').removeClass('active')
-    $div.addClass('active')
-})
-$('.line').on('click', 'div', function (e) {
-    let $div = $(e.currentTarget)
-    $div.addClass('active').siblings('.active').removeClass('active')
-})
-//页面加载成功即可画画
-$(window).on('load', draw)
-$('.tools > .draw').on('click', draw)
-$('.tools > .eraser').on('click', eraser)
-$('.tools > .clear').on('click', clear)
-$('.shapes > .triangle').on('click', triangle)
-$('.shapes > .squareness').on('click', square)
-$('.shapes > .circle').on('click', circle)
-$('.line').on('click', 'div', lineWidth)
-$('.color > ul').on('click', 'li', strokeStyle)
+let preShapePoint={}
 let result = 1
 let colorResult = 'black'
-
-//下载
-download.addEventListener('click',function(){
-   downloadCanvas(this,canvas,'test.png')
+//页面加载成功即可画画
+$(function () {
+    draw()
+    $('.tools > .draw').on('click', draw)
+    $('.tools > .eraser').on('click', eraser)
+    $('.tools > .clear').on('click', clear)
+    $('.shapes > .triangle').on('click', triangle)
+    $('.shapes > .squareness').on('click', square)
+    $('.shapes > .circle').on('click', circle)
+    $('.line').on('click', 'div', lineWidth)
+    $('.color > ul').on('click', 'li', strokeStyle)
+    $('.nav').on('click', '.point', toolAndShapeStyle)
+    $('.line').on('click', 'div', lineStyle)
+    $('#download').on('click',download)
+    $('.preview').on('click',preview)
 })
-function downloadCanvas(link,canvas,filename){
+function lineStyle(e) {
+    let $div = $(e.currentTarget)
+    $div.addClass('active').siblings('.active').removeClass('active')
+}
+function toolAndShapeStyle(e) {
+    let $div = $(e.currentTarget)
+    $div.closest('.nav').find('.point').removeClass('active')
+    $div.addClass('active')
+}
+//下载
+function download(){
+    downloadCanvas(this, canvas, 'test.png')
+}
+function downloadCanvas(link, canvas, filename) {
     link.href = canvas.toDataURL()
     link.download = filename
 }
 //预览
-$('.download .preview').on('click', function () {
+function preview(){
     var data = canvas.toDataURL("image/png");
     var newWindow = window.open('about:blank', 'image from canvas');
     newWindow.document.write("<img src='" + data + "' alt='from canvas'/>");
-})
+}
 //轮廓颜色
 function strokeStyle(e) {
     let $li = $(e.currentTarget)
-    let index = $li.index()
     colorResult = $li.data('value')
     $li.addClass('active').siblings('.active').removeClass('active')
 }
@@ -66,7 +66,11 @@ function lineWidth(e) {
     }
     return result
 }
-
+function preRecord(e){
+    let preX = e.offsetX
+    let preY = e.offsetY + 5
+    preShapePoint = { preX, preY }
+}
 
 //绘图
 function draw(e) {
@@ -96,7 +100,6 @@ function drawLine(e) {
     }
     prePoint = { 'preX': drawX, 'preY': drawY }
 }
-
 //橡皮檫
 function eraser() {
     off()
@@ -127,83 +130,69 @@ function clear() {
 //三角形
 function triangle() {
     off()
-    $('.myCanvas').on('mousedown', preTriangle)
+    $('.myCanvas').on('mousedown', preRecord)
     $('.myCanvas').on('mouseup', appearTriangle)
 }
-function preTriangle(e) {
-    let preTriX = e.offsetX
-    let preTriY = e.offsetY + 5
-    preTriPoint = { preTriX, preTriY }
-}
+
 function appearTriangle(e) {
     let appearTriX = e.offsetX
-    let appearTriY = e.offsetY + 5
+    let appearTriY = e.offsetY + 7
     if (canvas.getContext) {
         let context = canvas.getContext('2d')
         context.beginPath()
         context.lineWidth = result
         context.strokeStyle = colorResult
-        context.moveTo(preTriPoint.preTriX, preTriPoint.preTriY)
-        context.lineTo(appearTriX, preTriPoint.preTriY)
+        context.moveTo(preShapePoint.preX, preShapePoint.preY)
+        context.lineTo(appearTriX, preShapePoint.preY)
         context.lineTo(appearTriX, appearTriY)
-        context.lineTo(preTriPoint.preTriX, preTriPoint.preTriY)
+        context.lineTo(preShapePoint.preX, preShapePoint.preY)
         context.stroke()
     }
-    preTriPoint = null
+    preShapePoint = null
 }
 //矩形
 function square() {
     off()
-    $('.myCanvas').on('mousedown', preSquare)
+    $('.myCanvas').on('mousedown', preRecord)
     $('.myCanvas').on('mouseup', appearSquare)
-}
-function preSquare(e) {
-    let preSquX = e.offsetX
-    let preSquY = e.offsetY + 5
-    preSquPoint = { preSquX, preSquY }
 }
 function appearSquare(e) {
     let appearX = e.offsetX
-    let appearY = e.offsetY + 6
+    let appearY = e.offsetY + 7
     if (canvas.getContext) {
         let context = canvas.getContext('2d')
         context.beginPath()
         context.lineWidth = result
         context.strokeStyle = colorResult
-        context.moveTo(preSquPoint.preSquX, preSquPoint.preSquY)
-        context.lineTo(appearX, preSquPoint.preSquY)
+        context.moveTo(preShapePoint.preX, preShapePoint.preY)
+        context.lineTo(appearX, preShapePoint.preY)
         context.lineTo(appearX, appearY)
-        context.lineTo(preSquPoint.preSquX, appearY)
-        context.lineTo(preSquPoint.preSquX, preSquPoint.preSquY)
+        context.lineTo(preShapePoint.preX, appearY)
+        context.lineTo(preShapePoint.preX, preShapePoint.preY)
         context.stroke()
     }
-    preSquPoint = null
+    preShapePoint = null
 }
 //圆形
 function circle() {
     off()
-    $('.myCanvas').on('mousedown', preCircle)
+    $('.myCanvas').on('mousedown', preRecord)
     $('.myCanvas').on('mouseup', appearCircle)
-}
-function preCircle(e) {
-    let preCirX = e.offsetX
-    let preCirY = e.offsetY + 5
-    preCirPoint = { preCirX, preCirY }
 }
 function appearCircle(e) {
     let appearX = e.offsetX
     let appearY = e.offsetY + 5
-    let distanceX = appearX - preCirPoint.preCirX
-    let distanceY = appearY - preCirPoint.preCirY
+    let distanceX = appearX - preShapePoint.preX
+    let distanceY = appearY - preShapePoint.preY
     if (canvas.getContext) {
         let context = canvas.getContext('2d')
         context.beginPath()
         context.linewidth = result
         context.strokeStyle = colorResult
-        context.arc(preCirPoint.preCirX, preCirPoint.preCirY, Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2)), 0, Math.PI * 2, true)
+        context.arc(preShapePoint.preX, preShapePoint.preY, Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2)), 0, Math.PI * 2, true)
         context.stroke()
     }
-    preCirPoint = null
+    preShapePoint = null
 }
 
 function off() {
@@ -214,12 +203,12 @@ function off() {
     $('.myCanvas').off('mousedown', preEraser)
     $('.myCanvas').off('mousemove', clearParts)
     //取消三角形
-    $('.myCanvas').off('mousedown', preTriangle)
+    $('.myCanvas').off('mousedown', preRecord)
     $('.myCanvas').off('mouseup', appearTriangle)
     //取消矩形
-    $('.myCanvas').off('mousedown', preSquare)
+    // $('.myCanvas').off('mousedown', preRecord)
     $('.myCanvas').off('mouseup', appearSquare)
     //取消圆形
-    $('.myCanvas').off('mousedown', preCircle)
+    // $('.myCanvas').off('mousedown', preRecord)
     $('.myCanvas').off('mouseup', appearCircle)
 }
