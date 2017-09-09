@@ -1,0 +1,28 @@
+{
+  "name": "Canvas",
+  "version": "1.0.0",
+  "description": "1. 目前只支持PC端使用 2. HTML5,CSS3,jQuery库,Canvas API实现，无插件 #### 需求 1. 利用canvas做一个在线画板，能在其上面画东西 #### 功能 1. 画板可以调色 2. 可以添加图形，例如三角形，矩形等 3. 可以改变线宽 4. 有橡皮檫功能 5. 可下载和预览 #### 待解决问题 1. 可以自定义颜色 ### 实现原理 1. 将取消监听事件封装成函数 2. 函数的嵌套 3. 空对象的赋值与取值 4. 使用autoprefixer,让CSS支持各种浏览器 5. 使用babel,uglifyjs让JS由ES6变成ES5，并压缩代码 #### 注意事项 1. 由于边框有8px，造成鼠标点击的位置比canvas画图的位置在Y轴方向多几像素 2. 事件绑定时注意绑定间的逻辑关系,取消绑定时注意取消对象",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shenfeng1945/Canvas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shenfeng1945/Canvas/issues"
+  },
+  "homepage": "https://github.com/shenfeng1945/Canvas#readme",
+  "devDependencies": {
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "dependencies": {}
+}
