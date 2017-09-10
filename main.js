@@ -140,6 +140,10 @@ function clear() {
         let context = canvas.getContext('2d')
         context.clearRect(0, 0, canvas.width, canvas.height)
     }
+    $('.myCanvas').on('mouseup',advise)
+}
+function advise(){
+    alert('当前处于清空状态，请切换画板工具')
 }
 //三角形
 function triangle() {
@@ -225,4 +229,6 @@ function off() {
     //取消圆形
     // $('.myCanvas').off('mousedown', preRecord)
     $('.myCanvas').off('mouseup', appearCircle)
+    //取消清空建议
+    $('.myCanvas').off('mouseup',advise)
 }
