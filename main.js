@@ -4,9 +4,9 @@ let navWidth = document.getElementsByClassName('nav')[0].clientWidth
 canvas.width = clientWidth - navWidth
 canvas.height = clientHeight
 let prePoint = {}
-let preShapePoint={}
-let result = 1
-let colorResult = 'black'
+let preShapePoint = {}
+let result = 2
+let colorResult = '#000000'
 //页面加载成功即可画画
 $(function () {
     draw()
@@ -20,9 +20,23 @@ $(function () {
     $('.color > ul').on('click', 'li', strokeStyle)
     $('.nav').on('click', '.point', toolAndShapeStyle)
     $('.line').on('click', 'div', lineStyle)
-    $('#download').on('click',download)
-    $('.preview').on('click',preview)
+    $('#download').on('click', download)
+    $('.preview').on('click', preview)
+    $('form').on('submit',submit)
 })
+function submit(e) {
+    e.preventDefault()
+    colorResult = $('#inputColor').val()
+    let object = $('.color>ul>li')
+    $.each(object, function (item) {
+        let liColor = object.eq(item).data('value')
+        if (colorResult === liColor) {
+            object.eq(item).click()
+        }else{
+            object.eq(item).removeClass('active')
+        }
+    })
+}
 function lineStyle(e) {
     let $div = $(e.currentTarget)
     $div.addClass('active').siblings('.active').removeClass('active')
@@ -33,7 +47,7 @@ function toolAndShapeStyle(e) {
     $div.addClass('active')
 }
 //下载
-function download(){
+function download() {
     downloadCanvas(this, canvas, 'test.png')
 }
 function downloadCanvas(link, canvas, filename) {
@@ -41,7 +55,7 @@ function downloadCanvas(link, canvas, filename) {
     link.download = filename
 }
 //预览
-function preview(){
+function preview() {
     var data = canvas.toDataURL("image/png");
     var newWindow = window.open('about:blank', 'image from canvas');
     newWindow.document.write("<img src='" + data + "' alt='from canvas'/>");
@@ -50,6 +64,7 @@ function preview(){
 function strokeStyle(e) {
     let $li = $(e.currentTarget)
     colorResult = $li.data('value')
+    inputColor.value = colorResult
     $li.addClass('active').siblings('.active').removeClass('active')
 }
 //画笔宽度
@@ -66,12 +81,11 @@ function lineWidth(e) {
     }
     return result
 }
-function preRecord(e){
+function preRecord(e) {
     let preX = e.offsetX
     let preY = e.offsetY + 5
     preShapePoint = { preX, preY }
 }
-
 //绘图
 function draw(e) {
     off()

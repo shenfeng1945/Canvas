@@ -70,8 +70,24 @@ ul,ol{list-style:none;}
 .color ul li.active{
     background: rgba(0,0,0,.2);
 }
+.color > .moreColor{
+    display: flex;
+    margin-top:10px;
+    align-items:center;
+}
+.color > .moreColor span{
+    font-size:14px;
+}
+.color > .moreColor form{
+  padding-left:5px;
+}
+.color > .moreColor form #inputColor{
+   width:30px;
+}
+
+
 .download{
-    margin-top:25px;
+    margin-top:15px;
     cursor:pointer;
 }
 .download #download{

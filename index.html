@@ -51,22 +51,29 @@
             </section>
             <section class="line">
                 <p>粗细</p>
-                <div class="thin active" title="1mm宽">细</div>
-                <div class="middle" title="2mm宽">中粗</div>
+                <div class="thin" title="1mm宽">细</div>
+                <div class="middle active" title="2mm宽">中粗</div>
                 <div class="wide" title="3mm宽">粗</div>
             </section>
             <section class="color">
                 <p>颜色</p>
                 <ul>
-                    <li class="active" data-value="black">黑</li>
-                    <li data-value="red">红</li>
-                    <li data-value="orange">橙</li>
-                    <li data-value="yellow">黄</li>
-                    <li data-value="green">绿</li>
-                    <li data-value=blue>蓝</li>
-                    <li data-value="gray">灰</li>
-                    <li data-value="purple">紫</li>
+                    <li class="active" data-value="#000000">黑</li>
+                    <li data-value="#ff0000">红</li>
+                    <li data-value="#ffa500">橙</li>
+                    <li data-value="#ffff00">黄</li>
+                    <li data-value="#008000">绿</li>
+                    <li data-value="#0000ff">蓝</li>
+                    <li data-value="#808080">灰</li>
+                    <li data-value="#800080">紫</li>
                 </ul>
+                <div class="moreColor">
+                    <span>更多颜色:</span>
+                    <form>
+                      <input type="color" id="inputColor">
+                      <input type="submit" id="submit" value="确认">
+                    </form>
+                </div>
             </section>
             <section class="download">
               <a id=download>
@@ -85,5 +92,6 @@
         </div>
     </div>
 </body>
+<script src="./defineColor.js"></script>
 <script src="./main.js"></script>
 </html>
