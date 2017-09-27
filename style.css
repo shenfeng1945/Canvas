@@ -13,10 +13,10 @@ ul,ol{list-style:none;}
 }
 .nav{
     text-align: center;
-    width:12vw;
+    max-width:15vw;
 }
 .nav .tools{
-    margin-top:25px;
+    margin-top:15px;
 }
 .tools > div{
     border:1px solid black;
@@ -29,7 +29,7 @@ ul,ol{list-style:none;}
 }
 
 .shapes{
-    margin-top:25px;
+    margin-top:18px;
 }
 .shapes > div{
     border:1px solid black;
@@ -41,7 +41,7 @@ ul,ol{list-style:none;}
     background: rgba(0,0,0,.2);
 }
 .nav .line{
-    margin-top:25px;
+    margin-top:18px;
 }
 .line > div{
     border:1px solid black;
@@ -53,7 +53,7 @@ ul,ol{list-style:none;}
     background: rgba(0,0,0,.2);
 }
 .nav .color{
-    margin-top:25px;
+    margin-top:18px;
 }
 .color ul{
     display: flex;
