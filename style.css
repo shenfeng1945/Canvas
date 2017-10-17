@@ -13,10 +13,10 @@ ul,ol{list-style:none;}
 }
 .nav{
     text-align: center;
-    max-width:15vw;
+    max-width:14.5vw;
 }
 .nav .tools{
-    margin-top:15px;
+    margin-top:10px;
 }
 .tools > div{
     border:1px solid black;
@@ -29,7 +29,7 @@ ul,ol{list-style:none;}
 }
 
 .shapes{
-    margin-top:18px;
+    margin-top:12px;
 }
 .shapes > div{
     border:1px solid black;
@@ -41,7 +41,7 @@ ul,ol{list-style:none;}
     background: rgba(0,0,0,.2);
 }
 .nav .line{
-    margin-top:18px;
+    margin-top:12px;
 }
 .line > div{
     border:1px solid black;
@@ -53,7 +53,7 @@ ul,ol{list-style:none;}
     background: rgba(0,0,0,.2);
 }
 .nav .color{
-    margin-top:18px;
+    margin-top:12px;
 }
 .color ul{
     display: flex;
@@ -87,7 +87,7 @@ ul,ol{list-style:none;}
 
 
 .download{
-    margin-top:15px;
+    margin-top:12px;
     cursor:pointer;
 }
 .download #download{
@@ -98,7 +98,7 @@ ul,ol{list-style:none;}
 .download .preview{
     border:1px solid black;
     padding:5px 0;
-    margin-top:10px;
+    margin-top:5px;
 }
 svg.icon{
     width:20px;height:20px;
