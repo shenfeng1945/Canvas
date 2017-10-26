@@ -205,7 +205,7 @@ function appearCircle(e) {
     if (canvas.getContext) {
         let context = canvas.getContext('2d')
         context.beginPath()
-        context.linewidth = result
+        context.lineWidth = result
         context.strokeStyle = colorResult
         context.arc(preShapePoint.preX, preShapePoint.preY, Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2)), 0, Math.PI * 2, true)
         context.stroke()
