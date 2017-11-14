@@ -17,4 +17,7 @@ $('#inputColor').on('input', function (e) {
     let value = $('#inputColor').val()
     obj.value = value
 })
+window.addEventListener('beforeunload',function(e){
+    e.returnValue = '您可能有数据未保存'
+})
 
